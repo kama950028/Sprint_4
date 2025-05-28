@@ -157,6 +157,7 @@ public class MainPage {
         return "_blank".equals(yandexLogoLink.getAttribute("target"));
     }
 
+    public static final String BASE_URL = "https://qa-scooter.praktikum-services.ru";
 
 
 }

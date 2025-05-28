@@ -14,10 +14,8 @@ import org.pages.OrderPage;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @RunWith(Parameterized.class)
-public class OrderPagesTest {
-    private WebDriver webDriver;
+public class OrderPagesTest extends BaseTest {
 
-    private final String browser;
     private final String name;
     private final String surname;
     private final String address;
@@ -40,7 +38,6 @@ public class OrderPagesTest {
                           String term,
                           String color,
                           String comment) {
-        this.browser = browser;
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -63,24 +60,11 @@ public class OrderPagesTest {
         };
     }
 
-    @Before
-    public void startUp() {
-        if ("firefox".equalsIgnoreCase(browser)) {
-            WebDriverManager.firefoxdriver().setup();
-            webDriver = new FirefoxDriver();
-        } else {
-            WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver();
-        }
-        webDriver.get("https://qa-scooter.praktikum-services.ru");
-    }
-
-
     //Тест для проверки процесса оформления заказа после нажатия на кнопку "Заказать" в шапке
     @Test
-    public void orderWithHeaderButtonWhenSuccess() {
-        MainPage mainPage = new MainPage(this.webDriver);
-        OrderPage orderPage = new OrderPage(this.webDriver);
+    public void OrderWithHeaderButtonWhenSuccessTest() {
+        MainPage mainPage = new MainPage(this.driver);
+        OrderPage orderPage = new OrderPage(this.driver);
         mainPage.clickOrderButtonHeader();
         makeOrder(orderPage);
 
@@ -93,9 +77,9 @@ public class OrderPagesTest {
 
     //Тест для проверки процесса оформления заказа после нажатия на кнопку "Заказать" в теле сайта
     @Test
-    public void orderWithBodyButtonWhenSuccess() {
-        MainPage mainPage = new MainPage(this.webDriver);
-        OrderPage orderPage = new OrderPage(this.webDriver);
+    public void OrderWithBodyButtonWhenSuccessTest() {
+        MainPage mainPage = new MainPage(this.driver);
+        OrderPage orderPage = new OrderPage(this.driver);
         mainPage.clickOnCookieAcceptButton();
         mainPage.clickOrderButtonBody();
         makeOrder(orderPage);
@@ -125,10 +109,5 @@ public class OrderPagesTest {
         orderPage.setComment(this.comment);
 
         orderPage.makeOrder();
-    }
-
-    @After
-    public void tearDown() {
-        this.webDriver.quit();
     }
 }
