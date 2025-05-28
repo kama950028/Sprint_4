@@ -35,7 +35,7 @@ public class MainPage {
     private WebElement orderButtonTop;
 
     // 3. Кнопка «Заказать» внизу
-    @FindBy(xpath = "(//button[text()='Заказать'])[2]")
+    @FindBy(xpath = "(//button[text()='Заказать'])")
     private WebElement orderButtonBottom;
 
     // 4. Заголовок для раскрывающегося блока

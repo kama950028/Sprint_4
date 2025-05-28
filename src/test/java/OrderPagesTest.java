@@ -50,7 +50,7 @@ public class OrderPagesTest extends BaseTest {
     }
 
     //Параметры для запуска теста
-    @Parameterized.Parameters(name = "[Browser={0}] Оформление заказа. Позитивный сценарий. Пользователь: {0} {1}")
+    @Parameterized.Parameters(name = "Оформление заказа. Позитивный сценарий. Пользователь: {0} {1}")
     public static Object[][] setDataForOrder() {
         return new Object[][] {
                 //{"chrome", "Кира", "Найтли", "Москва, ул. Садовая, д. 12", "Юго-западная", "89834567890", "01.01.2025", "четверо суток", "чёрный жемчуг", "Комментарий!!!"},
